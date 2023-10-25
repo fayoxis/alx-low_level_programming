@@ -24,7 +24,7 @@ return (check_prime(num, num - 1));
  * @i: The divisor to be tested.
  *
  * This function is a helper function used in checking
- * if a given number is prime.It takes a number and a divisor 
+ * if a given number is prime.It takes a number and a divisor
  * as input and recursively checks if the number is prime.
  * The function checks if the number is divisible by the divisor.
  * If it is, the number is not prime and 0 is returned.
