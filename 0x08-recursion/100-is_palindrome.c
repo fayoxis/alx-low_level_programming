@@ -7,7 +7,7 @@
  * @start: The starting index of the substring.
  * @end: The ending index of the substring.
  *
- * Returns: 1 if the substring is a palindrome, 0 otherwise.
+ * Return: 1 if the string is a palindrome, 0 otherwise.
  */
 int check_palindrome(char *str, int start, int end)
 {
