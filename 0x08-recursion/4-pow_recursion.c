@@ -1,14 +1,15 @@
 #include "main.h"
 
 /**
- * _pow_recursion - Returns the value of base raised to the power of power.
+ * _pow_recursion - Returns the value of base raised to
+ * the power of power.
  * @base: The base value.
  * @power: The exponent value.
- *
- * This function calculates the result of base raised to the power of power.
- * It recursively multiplies the base by itself, reducing
- * the power by 1 each time, until the power reaches 0.
- * If the power is negative, the function returns -1. 
+ * This function calculates the result of base raised to
+ * the power of power. It recursively multiplies the base
+ * by itself, reducing the power by 1 each time, until
+ * the power reaches 0.If the power is negative, the
+ * function returns -1. 
  * Return: The result of base raised to the power of power.
  */
 
