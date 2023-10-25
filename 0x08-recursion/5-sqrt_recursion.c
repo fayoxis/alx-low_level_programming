@@ -25,7 +25,6 @@ int _sqrt(int num, int i);
  * a given number using recursion.It calls a helper function
  * _sqrt to perform the actual calculation.
  * If the given number is negative, the function returns -1.
- * 
  * Return: The natural square root of the given number,
  * or -1 if it is negative.
  */
@@ -47,7 +46,6 @@ return (_sqrt(num, 1));
  * iterator is equal to the given number.
  * If it is, the iterator is returned as the natural square root.
  * If the square of the iterator exceeds the given number, -1 is returned.
- * 
  * Return: The natural square root of the given number,
  * or -1 if it is not a perfect square.
  */
