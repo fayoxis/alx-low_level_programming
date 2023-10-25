@@ -9,7 +9,7 @@
  * the power of power. It recursively multiplies the base
  * by itself, reducing the power by 1 each time, until
  * the power reaches 0.If the power is negative, the
- * function returns -1. 
+ * function returns -1.
  * Return: The result of base raised to the power of power.
  */
 
