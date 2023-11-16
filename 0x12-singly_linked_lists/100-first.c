@@ -3,10 +3,11 @@
 void first(void) __attribute__ ((constructor));
 
 /**
-  * first - ...
-  *
-  * Return: Nothing. to print or code null
-  */
+ * first - ...
+ *
+ * Return: void (nothing)
+ */
+
 void first(void)
 {
 	printf("You're beat! and yet, you must allow,\n");
