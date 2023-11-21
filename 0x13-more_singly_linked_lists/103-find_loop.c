@@ -16,7 +16,6 @@ while (bfr != last)
 {
 if (bfr == last->next)
 return (last->next);
-            
 bfr = bfr->next;
 }
 if (last == last->next)
