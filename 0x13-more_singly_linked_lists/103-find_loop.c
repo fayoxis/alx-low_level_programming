@@ -8,19 +8,20 @@
  **/
 listint_t *find_listint_loop(listint_t *head)
 {
-listint_t *bfr = head;
-listint_t *last = head->next;
-while (last != NULL)
+listint_t *bfr, *last;
+if (head == NULL)
+return (NULL);
+for (last = head->next; last != NULL; last = last->next)
 {
-while (bfr != last)
-{
+
+for (bfr = head; bfr != last; bfr = bfr->next)
 if (bfr == last->next)
+
 return (last->next);
-bfr = bfr->next;
-}
+
 if (last == last->next)
 return (last);
-last = last->next;
 }
+
 return (NULL);
 }
