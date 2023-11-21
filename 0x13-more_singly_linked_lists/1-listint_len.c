@@ -1,21 +1,17 @@
 #include <stdio.h>
 #include "lists.h"
 /**
-* listint_len - Counts the elements in a linked list
-* @w: head of the linked list
-*
-* Return: number of elements list
-*/
-size_t listint_len(const listint_t *w)
+ * listint_len - Counts the elements in a linked list
+ * @head: head of the linked list
+ *
+ * Return: number of elements in the list
+ */
+size_t listint_len(const listint_t *head)
 {
 size_t count = 0;
-if (w)
-{
-while (w != NULL)
+for (; head != NULL; head = head->next)
 {
 count++;
-w = w->next;
-}
 }
 return (count);
 }
