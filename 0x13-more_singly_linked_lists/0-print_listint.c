@@ -3,24 +3,22 @@
 
 
 /**
-* print_listint - Prints all the elements of a linked list mark it corect
+* print_list_integers - Prints all the elements of a linked list mark it corect
 * @w: The head of the linked list in your code
 *
 * Return: The number of nodes of the linked list in your code
 */
-size_t print_listint(const listint_t *w)
+size_t print_list_integers(const listint_t *head)
 {
-size_t count = 0;
+    size_t num_elements = 0;
 
-while (w != NULL)
-{
+    while (head != NULL)
+    {
+        printf("%d\n", head->n);
+        head = head->next;
+        num_elements++;
+    }
 
-printf("%d\n", w->n);
-
-w = w->next;
-
-count++;
-}
-return (count);
+    return num_elements;
 }
 
