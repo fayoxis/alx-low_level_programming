@@ -3,12 +3,12 @@
 
 
 /**
-* print_listint - Prints all the elements of a linked list mark it corect
-* @w: The head of the linked list in your code
+* print_list_integers - Prints all the elements of a linked list mark it corect
+* @head: The head of the linked list in your code
 *
 * Return: The number of nodes of the linked list in your code
 */
-size_t print_listint(const listint_t *w)
+size_t print_list_integers(const listint_t *head)
 {
     size_t num_elements = 0;
 
