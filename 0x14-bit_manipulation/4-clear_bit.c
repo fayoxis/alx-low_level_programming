@@ -3,24 +3,29 @@
 #include "main.h"
 
 /**
-  * clear_bit - Sets value of a bit to 0 at a given index
-  * @num: The n to modify
-  * @index:  index in the nto modify
+  * clear_bit - Sets the value of a bit to 0 at a given index.
+  * @num: Pointer to the number to modify.
+  * @index: Index in the number to modify.
   *
-  * This function sets the value  v of a bit to 0 at a given index,
-  * takes pointer to an unsigned long integer/ the index of
-  *the bit to modify as
-  * parameters.
+  * This function sets the value of a bit to 0 at a given index.
+  * It takes a pointer to an unsigned long integer and the index of
+  * the bit to modify as parameters.
   *
-  * Return:  if the operation was successful = 1, or -1 if an issue occurred.
+  * Return: Returns 1 if the operation was successful, or -1 if an issue occurred.
   */
 int clear_bit(unsigned long int *num, unsigned int index)
 {
-/* Check if index is within the range of  unsigned long integer */
-if (index < sizeof(unsigned long int) * 8)
+unsigned int max_index = sizeof(unsigned long int) * 8;
+/* Check if the index is within the range of unsigned long integer */
+if (index < max_index)
 {
-/* Set the bit at the given index to 0 */
-*num &= ~(1UL << index);
+/* Clear the bit at the given index to 0 */
+unsigned int i = 0;
+while (i <= index)
+{
+*num &= ~(1UL << i);
+i++;
+}
 return (1);
 }
 return (-1);
