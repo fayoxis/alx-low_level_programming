@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * getBitValue - Returns the value of the bit at a given index.
+ * get_bit - Returns the value of the bit at a given index.
  * @number: The unsigned long integer.
  * @index: The index of the bit to retrieve, starting from 0.
  * Return: The value of the bit at the specified
