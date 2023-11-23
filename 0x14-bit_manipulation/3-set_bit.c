@@ -12,15 +12,13 @@
   */
 int set_bit(unsigned long int *num, unsigned int index)
 {
+{
 unsigned int max_index = sizeof(unsigned long int) * 8;
 /* Check if the index is out of bounds */
-unsigned int i = 0;
 if (index >= max_index)
 return (-1);
+
 /* Set the bit at the given index to 1 */
-do {
-*num |= (1UL << i);
-i++;
-} while (i <= index);
+*num |= (1UL << index);
 return (1);
 }
