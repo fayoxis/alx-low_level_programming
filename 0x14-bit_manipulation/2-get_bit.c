@@ -6,8 +6,8 @@
  * getBitValue - Returns the value of the bit at a given index.
  * @number: The unsigned long integer.
  * @index: The index of the bit to retrieve, starting from 0.
- *
- * Return: The value of the bit at the specified index on success, or -1 if an issue occurred.
+ * Return: The value of the bit at the specified
+ * index on success, or -1 if an issue occurred.
  */
 int get_bit(unsigned long int number, unsigned int index)
 {
