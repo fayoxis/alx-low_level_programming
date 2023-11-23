@@ -3,19 +3,24 @@
 #include "main.h"
 
 /**
-  * set_bit - Set value of a bit to 1 at  given index
-  * @num:  n to modify
-  * @index: index in the number to modify
+  * set_bit - Sets the value of a bit to 1 at a given index.
+  * @num: Pointer to the number to modify.
+  * @index: Index in the number to modify.
   *
-  * Return: if the bit was successfully set 1 , or -1 if an error occurred
+  * Return: Returns 1 if the bit was successfully
+  * set to 1, or -1 if an error occurred.
   */
 int set_bit(unsigned long int *num, unsigned int index)
 {
-/* Check if  index is out of bounds */
-if (index >= sizeof(unsigned long int) * 8)
+unsigned int max_index = sizeof(unsigned long int) * 8;
+/* Check if the index is out of bounds */
+if (index >= max_index)
 return (-1);
-
 /* Set the bit at the given index to 1 */
-*num |= (1UL << index);
+unsigned int i = 0;
+do {
+*num |= (1UL << i);
+i++;
+} while (i <= index);
 return (1);
 }
