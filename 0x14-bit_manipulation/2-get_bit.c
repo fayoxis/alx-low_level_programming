@@ -20,7 +20,7 @@ if (number % 2)
 return (1);
 else
 return (0);
-}    
+}
 number = number / 2;
 }
 if (index > bitIndex && index < 63)
