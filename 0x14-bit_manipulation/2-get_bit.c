@@ -9,7 +9,7 @@
  *
  * Return: The value of the bit at the specified index on success, or -1 if an issue occurred.
  */
-int getBitValue(unsigned long int number, unsigned int index)
+int get_bit(unsigned long int number, unsigned int index)
 {
 unsigned int bitIndex;
 for (bitIndex = 0; number > 0; bitIndex++)
