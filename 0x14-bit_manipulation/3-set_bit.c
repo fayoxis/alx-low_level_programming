@@ -12,7 +12,6 @@
   */
 int set_bit(unsigned long int *num, unsigned int index)
 {
-{
 unsigned int max_index = sizeof(unsigned long int) * 8;
 /* Check if the index is out of bounds */
 if (index >= max_index)
