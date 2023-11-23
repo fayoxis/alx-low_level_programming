@@ -2,41 +2,46 @@
 #include <stdio.h>
 #include "main.h"
 
-
 /**
-* _strlen - Returns length(valve) of the  string
-* @str: String to count
-*
-* Return: return the String length
-*/
+ * _strlen - Returns the length of a string
+ * @str: String to count
+ *
+ * Return: The length of the string
+ */
 int _strlen(const char *str)
 {
-unsigned int w = 0;
-while (str[w] != '\0')
-w++;
-return (w);
+unsigned int length = 0;
+for (; str[length] != '\0'; length++)
+{
+/* Loop until the end of the string */
+}
+return (length);
 }
 
-
 /**
-* binary_to_uint - Convert the binary n to an unsigned interger
-* @bin: binary string is to be converted
-*
-* Return: The positive n converted from binary
-*/
+ * binary_to_uint - Convert a binary string to an unsigned integer
+ * @bin: Binary string to be converted
+ *
+ * Return: The converted unsigned integer
+ */
 unsigned int binary_to_uint(const char *bin)
 {
-unsigned int len = 0, count = 0, sum = 0;
-
+unsigned int length = 0, count = 0, sum = 0;
 if (bin == NULL)
-return (0);
-len = _strlen(bin);
-while (len--)
 {
-if (bin[len] != '0' && bin[len] != '1')
 return (0);
-if (bin[len] == '1')
+}
+length = _strlen(bin);
+for (; length > 0; length--)
+{
+if (bin[length - 1] != '0' && bin[length - 1] != '1')
+{
+return (0);
+}
+if (bin[length - 1] == '1')
+{
 sum += 1 << count;
+}
 count++;
 }
 return (sum);
