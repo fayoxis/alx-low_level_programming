@@ -20,12 +20,8 @@ unsigned int max_index = sizeof(unsigned long int) * 8;
 /* Check if the index is within the range of unsigned long integer */
 if (index < max_index)
 {
-unsigned int i = 0;
-while (i <= index)
-{
-*num &= ~(1UL << i);
-i++;
-}
+/* Clear the bit at the given index to 0 */
+*num &= ~(1UL << index);
 return (1);
 }
 return (-1);
