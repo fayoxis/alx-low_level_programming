@@ -3,29 +3,28 @@
 #include "main.h"
 
 /**
- * get_bit - Return the value of the bit given index.
- * @num: The unsigned long integer n.
- * @index:  index, starting from 0 of the bit wanna to get.
+ * getBitValue - Returns the value of the bit at a given index.
+ * @number: The unsigned long integer.
+ * @index: The index of the bit to retrieve, starting from 0.
  *
- * Return:  value of the bit at @index on success, or -1 if an issue occurred.
+ * Return: The value of the bit at the specified index on success, or -1 if an issue occurred.
  */
-int get_bit(unsigned long int num, unsigned int index)
+int getBitValue(unsigned long int number, unsigned int index)
 {
-unsigned int v_index = 0;
-while (num)
+unsigned int bitIndex;
+for (bitIndex = 0; number > 0; bitIndex++)
 {
-if (v_index == index)
+if (bitIndex == index)
 {
-if (num % 2)
+if (number % 2)
 return (1);
 else
 return (0);
 }
-num = num / 2;
-v_index++;
+        
+number = number / 2;
 }
-if (index > v_index && index < 63)
+if (index > bitIndex && index < 63)
 return (0);
 return (-1);
 }
-
