@@ -5,7 +5,7 @@ int _strlen(const char *str);
 unsigned int binary_to_uint(const char *bin);
 unsigned int flip_bits(unsigned long int num, unsigned long int w);
 int _putchar(char c);
-int get_bit(unsigned long int num, unsigned int index);
+int getBitValue(unsigned long int number, unsigned int index);
 void print_binary(unsigned long int num);
 
 int clear_bit(unsigned long int *num, unsigned int index);
