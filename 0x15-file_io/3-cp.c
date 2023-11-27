@@ -3,12 +3,13 @@
 
 
 /**
- * copy_file - Copy the contents of one file to another.
- * @srcs : path of the source file
- * @dest: path of the destination file
+ * copy_file - Copies the contents of one file to another.
+ * @src: The path of the source file.
+ * @dest: The path of the destination file.
  *
- * Return: 0 on success, -1 on failure.
+ * Return: Returns 0 on success, -1 on failure.
  */
+
 void  copy_file(const char *srcs, const char *dest)
 {
 int od, td, readed;
@@ -47,11 +48,10 @@ exit(100);
 
 
 /**
- * main - Entry point
- * @arc: The argument count
- * @arv: The argument vector
- *
- * Return: 0 on success, 1 on incorrect usage, -1 on error.
+ * main - Entry point of the program.
+ * @arc: The argument count.
+ * @arv: The argument vector.
+ * Return: Returns 0 on success, 1 on incorrect usage, -1 on error.
  */
 int main(int arc, char **arv)
 {
