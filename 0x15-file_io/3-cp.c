@@ -6,9 +6,8 @@
  * copy_file - Copies the contents of one file to another.
  * @src: The path of the source file.
  * @dest: The path of the destination file.
- *
  * Return: Returns 0 on success, -1 on failure.
- */
+ **/
 
 void  copy_file(const char *srcs, const char *dest)
 {
@@ -51,8 +50,9 @@ exit(100);
  * main - Entry point of the program.
  * @arc: The argument count.
  * @arv: The argument vector.
- * Return: Returns 0 on success, 1 on incorrect usage, -1 on error.
- */
+ * Return: Returns 0 on success, 1 on
+ * incorrect usage, -1 on error.
+ **/
 int main(int arc, char **arv)
 {
 if (arc != 3)
