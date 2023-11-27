@@ -11,9 +11,13 @@ void print_entry(char *head);
 void print_entry(char *head);
 void print_field(const char *name, int value, const char *format);
 void print_class(char *head);
+
+
 void print_version(char *head);
 void print_data(char *head);
 void print_abi(char *head);
+
+
 void print_type(char *head);
 int main(int argc, char *argv[]);
 size_t read_textfile(const char *f_name, size_t L);
