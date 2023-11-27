@@ -4,7 +4,7 @@
 
 /**
  * copy_file - Copies the contents of one file to another.
- * @src: The path of the source file.
+ * @srcs: The path of the source file.
  * @dest: The path of the destination file.
  * Return: Returns 0 on success, -1 on failure.
  **/
