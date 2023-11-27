@@ -5,7 +5,6 @@
 /**
  * _strlen - Returns the length of a string
  * @str: String to count
- *
  * Return: The length of the string
  */
 int _strlen(const char *str)
