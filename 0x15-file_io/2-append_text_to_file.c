@@ -4,11 +4,12 @@
 
 /**
  * append_text_to_file - Appends text content to a file.
- * @f_name: This function takes the name of the file (@f_name)
+ * @f_name: The name of the file to which the text
+ * content will be appended.
  * @text_content: The text content to be appended.
- *
- * Return: It returns 1 on success and -1 on failure.
+ * Return: Returns 1 on success and -1 on failure.
  */
+
 int append_text_to_file(const char *f_name, char *text_content)
 {
 FILE *f;
