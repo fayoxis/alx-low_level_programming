@@ -1,10 +1,7 @@
 #ifndef ELF_HEADER_H
 #define ELF_HEADER_H
-
 #include <stdint.h>
-
 #define EI_NIDENT 16
-
 typedef struct {
     unsigned char e_ident[EI_NIDENT];
     uint16_t e_type;
@@ -21,7 +18,9 @@ typedef struct {
     uint16_t e_shnum;
     uint16_t e_shstrndx;
 } Elf64_Ehdr;
-
 void print_elf_header(const Elf64_Ehdr* header);
+
+
+
 
 #endif /* ELF_HEADER_H */
