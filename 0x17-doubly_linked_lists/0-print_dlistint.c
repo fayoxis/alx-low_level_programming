@@ -9,13 +9,12 @@
  */
 size_t print_dlistint(const dlistint_t *head)
 {
-    size_t nodes = 0;
-    const dlistint_t *temp;
-
-    for (temp = head; temp != NULL; temp = temp->next)
-    {
-        printf("%d\n", temp->n);
-        nodes++;
-    }
-    return nodes;
+size_t nodes = 0;
+const dlistint_t *temp;
+for (temp = head; temp != NULL; temp = temp->next)
+{
+printf("%d\n", temp->n);
+nodes++;
+}
+return (nodes);
 }
