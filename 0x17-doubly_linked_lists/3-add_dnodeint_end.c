@@ -2,58 +2,54 @@
 #include <stdlib.h>
 
 /**
- * create_lnode - creates a new DLL node with data
- * @n: data to add to node
+ * create_dnode - Creates a new doubly linked list node with data.
+ * @data: The data to add to the node.
  *
- * Return: pointer to newly allocated/populated node
+ * Return: A pointer to the newly allocated/populated node.
  */
-dlistint_t *create_lnode(const int n)
+dlistint_t *create_dnode(const int data)
 {
-	dlistint_t *new_node = NULL;
+dlistint_t *new_node = malloc(sizeof(dlistint_t));
+if (!new_node)
+return (NULL);
 
-	new_node = malloc(sizeof(dlistint_t));
-	if (!new_node)
-		return (NULL);
-
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	new_node->n = n;
-
-	return (new_node);
+new_node->next = NULL;
+new_node->prev = NULL;
+new_node->n = data;
+return new_node;
 }
 
 /**
- * add_dnodeint_end - adds a node to the end of a doubly linked
- * list
- * @head: double pointer to the head, so we can modify if needed
- * @n: data to add to new node
+ * add_dnodeint_end - Adds a node to the end of a doubly linked list.
+ * @head: A double pointer to the head of the list.
+ * @data: The data to add to the new node.
  *
- * Return: pointer to new element, NULL on failure.
+ * Return: A pointer to the new element, or NULL on failure.
  */
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int data)
 {
-	dlistint_t *new_node = NULL, *temp = NULL;
-
-	new_node = create_lnode(n);
-	if (!new_node)
-		return (NULL);
-
-	if (!head || !(*head)) /* NULL DLL */
-	{
-		*head = new_node;
-		return (new_node);
-	}
-	else /* DLL exists */
-	{
-		temp = *head;
-		while (temp->next) /* advance to end of DLL */
-			temp = temp->next;
-
-		new_node->prev = temp;
-		temp->next = new_node;
-
-		return (new_node);
-	}
-	/* should never happen, here for compiler */
-	return (NULL);
+dlistint_t *new_node = create_dnode(data);
+if (!new_node)
+return (NULL);
+if (*head == NULL) /* Empty DLL */
+{
+*head = new_node;
+return (new_node);
+}
+else /* DLL exists */
+{
+dlistint_t *temp = *head;
+do
+{
+if (temp->next == NULL) /* Reached the end of the DLL */
+{
+new_node->prev = temp;
+temp->next = new_node;
+return (new_node);
+}
+temp = temp->next;
+} while (temp != NULL);
+}
+/* This line should never be reached; it is here for the compiler's sake */
+return (NULL);
 }
