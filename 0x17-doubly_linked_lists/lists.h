@@ -4,7 +4,7 @@
 #include <stdlib.h>
 /**
  * struct dlistint_s - doubly linked list
- * @n: integer
+ * @data: integer
  * @prev: points to the previous node
  * @next: points to the next node
  *
