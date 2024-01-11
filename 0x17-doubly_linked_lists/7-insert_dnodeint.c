@@ -28,7 +28,8 @@ return (new_node);
  *
  * Return: returns pointer to new element, NULL on failure.
  */
-dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int index, int data)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **head,
+unsigned int index, int data)
 {
 dlistint_t *new_node = NULL, *current = NULL;
 unsigned int i;
