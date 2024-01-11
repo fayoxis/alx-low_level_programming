@@ -9,45 +9,48 @@
  *
  * Return: Always 0.
  */
-int main(int __attribute__((__unused__)) arg_count, char *argument_v[])
-{
-    char password[7], *codex;
-    int len = strlen(argument_v[1]), i, tmp;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
-    codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+int main(int arg_count, char *argument_v[]) {
+    unsigned int i, b;
+    size_t len, add;
+    char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+    char p[7] = "      ";
 
-    tmp = (len ^ 59) & 63;
-    password[0] = codex[tmp];
-
-    tmp = 0;
-    for (i = 0; i < len; i++)
-        tmp += argument_v[1][i];
-    password[1] = codex[(tmp ^ 79) & 63];
-
-    tmp = 1;
-    for (i = 0; i < len; i++)
-        tmp *= argument_v[1][i];
-    password[2] = codex[(tmp ^ 85) & 63];
-
-    tmp = 0;
-    for (i = 0; i < len; i++)
-    {
-        if (argument_v[1][i] > tmp)
-            tmp = argument_v[1][i];
+    if (arg_count != 2) {
+        printf("Correct usage: ./keygen5 username\n");
+        return 1;
     }
-    srand(tmp ^ 14);
-    password[3] = codex[rand() & 63];
 
-    tmp = 0;
-    for (i = 0; i < len; i++)
-        tmp += (argument_v[1][i] * argument_v[1][i]);
-    password[4] = codex[(tmp ^ 239) & 63];
+    len = strlen(argument_v[1]);
+    p[0] = l[(len ^ 59) & 63];
 
-    for (i = 0; i < argument_v[1][0]; i++)
-        tmp = rand();
-    password[5] = codex[(tmp ^ 229) & 63];
+    for (i = 0, add = 0; i < len; i++)
+        add += argument_v[1][i];
+    p[1] = l[(add ^ 79) & 63];
 
-    password[6] = '\0';
-    printf("%s", password);
-    return (0);
+    for (i = 0, b = 1; i < len; i++)
+        b *= argument_v[1][i];
+    p[2] = l[(b ^ 85) & 63];
+
+    for (b = argument_v[1][0], i = 0; i < len; i++) {
+        if ((char)b <= argument_v[1][i])
+            b = argument_v[1][i];
+    }
+    srand(b ^ 14);
+    p[3] = l[rand() & 63];
+
+    for (b = 0, i = 0; i < len; i++)
+        b += argument_v[1][i] * argument_v[1][i];
+    p[4] = l[(b ^ 239) & 63];
+
+    for (b = 0, i = 0; (char)i < argument_v[1][0]; i++)
+        b = rand();
+    p[5] = l[(b ^ 229) & 63];
+
+    printf("%s\n", p);
+    return 0;
 }
