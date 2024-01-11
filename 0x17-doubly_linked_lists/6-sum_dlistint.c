@@ -10,7 +10,8 @@
 int sum_doubly_linked_list(dlistint_t *head)
 {
 int totalSum = 0;
-for (dlistint_t *current = head; current != NULL; current = current->next)
+dlistint_t *current;
+for (current = head; current != NULL; current = current->next)
 {
 totalSum += current->n;
 }
