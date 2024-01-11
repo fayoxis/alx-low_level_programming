@@ -7,7 +7,7 @@
  *
  * Return: The number of nodes in the doubly linked list
  */
-size_t print_doubly_linked_list(const dlistint_t *head)
+size_t print_dlistint(const dlistint_t *head)
 {
 	size_t node_count = 0;
 	const dlistint_t *current_node = head;
