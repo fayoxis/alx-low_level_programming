@@ -1,3 +1,5 @@
+#include "lists.h"
+
 /**
  * get_dnodeint_at_index - Retrieves a doubly linked
  * list node at a given index.
