@@ -1,39 +1,44 @@
 #include <stdio.h>
 
 char is_palindrome(unsigned int num);
+
 /**
- * main - entry point to find palindrome program
+ * main - it is an entry point to find palindrome program
  *
- * Return: always 0
+ * Return: always returns  0
  */
 int main(void)
 {
-	unsigned int d1, d2, temp, max;
+unsigned int d1 = 100, d2 = 100, temp, max = 0;
 
-	max = 0;
-	for (d1 = 100; d1 <= 999; d1++)
-	{
-		for (d2 = 100; d2 <= 999; d2++)
-		{
-			temp = d1 * d2;
-			if (is_palindrome(temp))
-				max = (temp > max) ? temp : max;
-		}
-	}
-	printf("Largest palindrome of 3 digit numbers is: %d\n", max);
+while (d1 <= 999)
+{
+while (d2 <= 999)
+{
+temp = d1 * d2;
+if (is_palindrome(temp))
+max = (temp > max) ? temp : max;
+d2++;
+}
+d1++;
+d2 = 100;
 }
 
-char is_palindrome(unsigned int num)
-{
-	unsigned int reverse = 0, rem = 0, n = num;
+printf("the Largest palindrome of 3 digit numbers is: %d\n", max);
 
-	while (n != 0)
-	{
-		rem = n % 10;
-		reverse = reverse * 10 + rem;
-		n /= 10;
-	}
-	if (reverse == num)
-		return (1);
-	return (0);
+return (0);
+}
+
+char is_palindrome(char num)
+{
+char reverse = 0, rem = 0, n = num;
+for (n = num; n != 0; n /= 10)
+{
+rem = n % 10;
+reverse = reverse * 10 + rem;
+}
+
+if (reverse == num)
+return (1);
+return (0);
 }
