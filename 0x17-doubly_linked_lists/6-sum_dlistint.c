@@ -1,13 +1,13 @@
 #include "lists.h"
 
 /**
- * sum_doubly_linked_list - Calculates the sum of all
+ * sum_dlistint - Calculates the sum of all
  * elements in a doubly linked list.
  * @head: Pointer to the head of the doubly linked list.
  * Return: The sum of all elements in the doubly linked list.
  * Returns 0 if the doubly linked list is NULL.
  */
-int sum_doubly_linked_list(dlistint_t *head)
+int sum_dlistint(dlistint_t *head)
 {
 int totalSum = 0;
 dlistint_t *current;
