@@ -13,7 +13,7 @@ int main(void)
     dlistint_t *head;
     dlistint_t *new;
     dlistint_t hello = {8, NULL, NULL};
-    size_t n;
+    size_t data;
 
     head = &hello;
     new = malloc(sizeof(dlistint_t));
@@ -27,8 +27,8 @@ int main(void)
     new->next = head;
     new->prev = NULL;
     head = NULL;
-    n = DoublyLinkedListNode(head);
-    printf("-> %lu elements\n", n);
+    data = DoublyLinkedListNode(head);
+    printf("-> %lu elements\n", data);
     free(new);
     return (EXIT_SUCCESS);
 }
