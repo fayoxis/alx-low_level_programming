@@ -16,7 +16,7 @@ return (NULL);
 new_node->next = NULL;
 new_node->prev = NULL;
 new_node->n = data;
-return new_node;
+return (new_node);
 }
 
 /**
@@ -39,8 +39,7 @@ return (new_node);
 else /* DLL exists */
 {
 dlistint_t *temp = *head;
-do
-{
+do {
 if (temp->next == NULL) /* Reached the end of the DLL */
 {
 new_node->prev = temp;
