@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+/**
+ * findLargest - Finds the largest number
+ *
+ * @str: The username
+ * @len: The length of the username
+ * Return: The largest number
+ */
 int findLargest(char *str, int len)
 {
 int largest = *str;
@@ -16,6 +22,12 @@ largest = str[i];
 srand(largest ^ 14);
 return ((rand() & 63));
 }
+/**
+ * multiplyChars - it is multiplies each char of username
+ * @str: username
+ * @len: length of username
+ * Return: multiplied char
+ */
 int multiplyChars(char *str, int len)
 {
 int result = 0;
@@ -26,6 +38,13 @@ result += str[i] * str[i];
 }
 return ((result ^ 239) & 63);
 }
+/**
+ * generateRandomChar - generates a random char
+ *
+ * @str: username
+ * Return: a random char
+ */
+
 int generateRandomChar(char *str)
 {
 int randomChar = 0;
@@ -38,6 +57,12 @@ randomChar = rand();
 
 return ((randomChar ^ 229) & 63);
 }
+/**
+ * main - it is the Entry of point
+ * @argc: it is arguments count
+ * @argv: it is arguments vector
+ * Return: return  0
+ */
 int main(int argc, char **argv)
 {
 char keygen[7];
