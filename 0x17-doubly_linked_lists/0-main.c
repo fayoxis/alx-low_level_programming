@@ -27,7 +27,7 @@ int main(void)
     new->next = head;
     new->prev = NULL;
     head = NULL;
-    n = print_dlistint(head);
+    n = print_doubly_linked_list(head);
     printf("-> %lu elements\n", n);
     free(new);
     return (EXIT_SUCCESS);
