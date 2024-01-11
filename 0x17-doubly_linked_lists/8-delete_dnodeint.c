@@ -2,39 +2,34 @@
 #include <stdlib.h>
 
 /**
- * delete_dnodeint_at_index - inserts a node at position
+ * delete_dnodeint_at_index - deletes a node at a given index
  * in a doubly linked list
- * @h: double pointer to the head, so we can modify if needed
- * @index: index to insert new node at
+ * @head: double pointer to the head of the list
+ * @index: index of the node to delete
  *
- * Return: 1 (success), -1 (failure)
+ * Return: 1 if successful, -1 if failed
  */
-int delete_dnodeint_at_index(dlistint_t **h, unsigned int index)
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *temp = NULL;
-	unsigned int i = 0;
-
-	if (!h || !(*h)) /* NULL DLL */
-	{
-		return (-1);
-	}
-	else /* DLL exists */
-	{
-		temp = *h;
-		/* advance to pos of idx in DLL */
-		while (index != i++ && temp)
-			temp = temp->next;
-		if (!temp) /* end of DLL */
-			return (-1);
-		if (temp->next)
-			temp->next->prev = temp->prev;
-		if (index == 0) /* delete at head */
-			*h = temp->next;
-		else
-			temp->prev->next = temp->next;
-		free(temp);
-		return (1);
-	}
-	/* should never happen, here for compiler */
-	return (-1);
+dlistint_t *current = NULL;
+unsigned int count;
+if (!head || !(*head)) /* If the list is empty */
+{
+return (-1);
+}
+current = *head;
+for (count = 0; count < index && current; count++)
+{
+current = current->next;
+}
+if (!current) /* If the end of the list is reached */
+return (-1);
+if (current->next)
+current->next->prev = current->prev;
+if (index == 0) /* If deleting the head node */
+*head = current->next;
+else
+current->prev->next = current->next;
+free(current);
+return (1);
 }
