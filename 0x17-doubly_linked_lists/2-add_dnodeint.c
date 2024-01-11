@@ -2,54 +2,56 @@
 #include <stdlib.h>
 
 /**
- * create_node - creates a new DLL node with data
- * @n: data to add to node
+ * create_node - Creates a new node for a doubly linked list with the given data.
+ * @data: The data to add to the node.
  *
- * Return: pointer to newly allocated/populated node
+ * Return: A pointer to the newly allocated and populated node.
  */
-dlistint_t *create_node(const int n)
+dlistint_t *create_node(const int data)
 {
-	dlistint_t *new_node = NULL;
+    dlistint_t *newNode = NULL;
 
-	new_node = malloc(sizeof(dlistint_t));
-	if (!new_node)
-		return (NULL);
+    newNode = malloc(sizeof(dlistint_t));
+    if (!newNode)
+        return (NULL);
 
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	new_node->n = n;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    newNode->n = n;
 
-	return (new_node);
+    return (newNode);
 }
 
 /**
- * add_dnodeint - adds a node to the head of a doubly linked list
- * @head: double pointer to the head, so we can modify if needed
- * @n: data to add to new node
+ * add_dnodeint - Adds a new node with the given data to the head of a doubly linked list.
+ * @head: A double pointer to the head of the list.
+ * @data: The data to add to the new node.
  *
- * Return: pointer to new element, NULL on failure.
+ * Return: A pointer to the new element, or NULL on failure.
  */
-dlistint_t *add_dnodeint(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint(dlistint_t **head, const int data)
 {
-	dlistint_t *new_node = NULL, *temp = NULL;
+    dlistint_t *newNode = NULL, *temp = NULL;
 
-	new_node = create_node(n);
-	if (!new_node)
-		return (NULL);
+    newNode = create_node(n);
+    if (!newNode)
+        return (NULL);
 
-	if (!head || !(*head)) /* NULL DLL */
-	{
-		*head = new_node;
-		return (new_node);
-	}
-	else /* DLL exists */
-	{
-		temp = *head;
-		temp->prev = new_node;
-		*head = new_node;
-		new_node->next = temp;
-		return (new_node);
-	}
+    if (!head) /* Invalid head pointer */
+        return (NULL);
 
-	return (NULL);
+    if (!(*head)) /* Empty DLL */
+    {
+        *head = newNode;
+        return (newNode);
+    }
+
+    temp = *head;
+    while (temp->prev != NULL) /* Traverse to the first node */
+        temp = temp->prev;
+
+    temp->prev = newNode;
+    newNode->next = temp;
+    *head = newNode;
+    return (newNode);
 }
