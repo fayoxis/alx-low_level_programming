@@ -9,17 +9,14 @@
  */
 dlistint_t *create_node(const int data)
 {
-    dlistint_t *newNode = NULL;
-
-    newNode = malloc(sizeof(dlistint_t));
-    if (!newNode)
-        return (NULL);
-
-    newNode->next = NULL;
-    newNode->prev = NULL;
-    newNode->n = data;
-
-    return (newNode);
+dlistint_t *newNode = NULL;
+newNode = malloc(sizeof(dlistint_t));
+if (!newNode)
+return (NULL);
+newNode->next = NULL;
+newNode->prev = NULL;
+newNode->n = data;
+return (newNode);
 }
 
 /**
