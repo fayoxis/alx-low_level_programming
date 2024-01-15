@@ -1,12 +1,13 @@
 #include "main.h"
 
 /**
- * *_strncat - it concatenates n bytes from a string to another
- * @dest: The destination string.
- * @src: The source string.
- * @n: The number of bytes from src to concatenate.
- * Returns: A pointer to the resulting string dest.
- **/
+ * _strncat -  it concatenates n bytes from a string to another
+ * @dest: the destination string
+ * @src: the source string
+ * @n: the number of bytes of str to concatenate
+ *
+ * Return: return  pointers to the resulting string dest
+ */
 char *_strncat(char *dest, char *src, int n)
 {
 int i, j;
