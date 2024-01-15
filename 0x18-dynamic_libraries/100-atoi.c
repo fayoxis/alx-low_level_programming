@@ -19,7 +19,7 @@ i++;
 /* Check the si */
 if (s[i] == '-')
 {
-si= -1;
+si = -1;
 i++;
 }
 else if (s[i] == '+')
@@ -32,5 +32,5 @@ while (s[i] >= '0' && s[i] <= '9')
 n = n * 10 + (s[i] - '0');
 i++;
 }
-return (n * si);
+return (n *si);
 }
