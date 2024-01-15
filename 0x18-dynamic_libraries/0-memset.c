@@ -3,7 +3,7 @@
 /**
  * _memset - Fills a block of memory with a specified value.
  * @s: Pointer to the memory area to be filled.
- * @c: Value to be set.
+ * @b: Value to be set.
  * @n: Number of bytes to be filled.
  * Return: Pointer to the memory area s.
  */
