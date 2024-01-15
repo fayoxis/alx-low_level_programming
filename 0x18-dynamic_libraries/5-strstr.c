@@ -3,7 +3,7 @@
 
 /**
  * *_strstr - it alocates a substring
- * @haystack: this is the string to be search 
+ * @haystack: this is the string to be search
  * @needle: thi sis the substring to look for
  * Return: return pointer to the beginningof located substring
  * or NULL if the substring is not found
