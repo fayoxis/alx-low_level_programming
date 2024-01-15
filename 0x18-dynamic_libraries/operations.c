@@ -45,7 +45,7 @@ return (i * j);
  */
 int div(int k, int j)
 {
-    return (k / j);
+return (k / j);
 }
 
 /**
