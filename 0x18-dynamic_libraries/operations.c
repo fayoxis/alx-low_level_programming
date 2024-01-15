@@ -32,7 +32,7 @@ return (i - k);
  * @j: this is the second integer to  be multiplied
  * Return: return the product
  */
-int div(int i, int j)
+int mul(int i, int j)
 {
 return (i * j);
 }
