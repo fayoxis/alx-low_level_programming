@@ -2,10 +2,11 @@
 
 /**
  * *_memcpy - copies memory area
- * @dest: The destination memory area.
- * @src: The memory area to copy from.
- * @n: The number of bytes to copy.
- * Returns: A pointer to the destination memory area.
+ * @dest: The destination memory area
+ * @src: the memory area to copy from
+ * @n: the number of bytes to copy
+ *
+ * Return: returns pointer to dest
  */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
