@@ -61,5 +61,5 @@ return (i / k);
 
 int mod(int k, int j)
 {
-return (i % k);
+return (k % j);
 }
