@@ -103,12 +103,12 @@ node->sprev = temp_var->sprev;
 temp_var->sprev = node;
 while (node->sprev != NULL)
 node->sprev->snext = node;
+}
 else
 table->shead = node;
 return;
 }
 }
-    
 /* If the node's key is greater than all the keys in the list, */
 node->sprev = table->stail;
 table->stail->snext = node;
