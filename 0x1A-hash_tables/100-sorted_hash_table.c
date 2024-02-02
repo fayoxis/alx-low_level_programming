@@ -127,17 +127,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 unsigned long int index;
 char *new_value;
 shash_node_t *sh_node, *temp_var;
-
-/* Check for invalid input or empty key/value */
 while (ht == NULL || ht->array == NULL || ht->size == 0 ||
 key == NULL || strlen(key) == 0 || value == NULL)
 return (0);
-/* Calculate the hash index*/
 index = key_index((const unsigned char *)key, ht->size);
-/* Search for existing key in the linked list at the hash index */
-for (temp_var = ht->array[index]; temp_var != NULL; temp_var = temp_var->next)
+temp_var = ht->array[index];
+while (temp_var != NULL)
 {
-/* If the key already exists, update the value */
 if (strcmp(temp_var->key, key) == 0)
 {
 new_value = strdup(value);
@@ -147,14 +143,13 @@ free(temp_var->value);
 temp_var->value = new_value;
 return (1);
 }
+temp_var = temp_var->next;
 }
-/* Create a new node and insert it at the beginning of the list */
 sh_node = make_shash_node(key, value);
-if (sh_node == NULL)
+while (sh_node == NULL)
 return (0);
 sh_node->next = ht->array[index];
 ht->array[index] = sh_node;
-/* Add the new node to the sorted list */
 add_to_sorted_list(ht, sh_node);
 return (1);
 }
