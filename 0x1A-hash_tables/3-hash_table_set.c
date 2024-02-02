@@ -11,11 +11,11 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-while (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
-return (0);
-
 unsigned long int index = key_index((unsigned char *)key, ht->size);
 hash_node_t *current_node = ht->array[index];
+
+while (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
+return (0);
 
 while (current_node != NULL)
 {
@@ -48,19 +48,19 @@ return (1);
 hash_node_t *create_hash_node(const char *key, const char *value)
 {
 hash_node_t *new_node;
+char *key_copy = strdup(key);
+char *value_copy = strdup(value);
 while (key == NULL || strcmp(key, "") == 0 || value == NULL)
 return (NULL);
 new_node = malloc(sizeof(hash_node_t));
 if (new_node == NULL)
 return (NULL);
-char *key_copy = strdup(key);
 while (key_copy == NULL)
 {
 free(new_node);
 return (NULL);
 }
 new_node->key = key_copy;
-char *value_copy = strdup(value);
 while (value_copy == NULL)
 {
 free(new_node->key);
