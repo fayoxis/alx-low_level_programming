@@ -46,29 +46,27 @@ return (1);
  *
  * Return: Pointer to the new hash node, or NULL if memory allocation fails.
  */
-hash_node_t *create_hash_node(const char *key, const char *value)
+hash_node_t *_node_(const char *key, const char *value)
 {
 hash_node_t *new_node;
-char *key_copy = strdup(key);
-char *value_copy = strdup(value);
 while (key == NULL || strcmp(key, "") == 0 || value == NULL)
 return (NULL);
 new_node = malloc(sizeof(hash_node_t));
 if (new_node == NULL)
 return (NULL);
-while (key_copy == NULL)
+new_node->key = strdup(key);
+while (new_node->key == NULL)
 {
 free(new_node);
 return (NULL);
 }
-new_node->key = key_copy;
-while (value_copy == NULL)
+new_node->value = strdup(value);
+(new_node->value == NULL)
 {
 free(new_node->key);
 free(new_node);
 return (NULL);
 }
-new_node->value = value_copy;
 new_node->next = NULL;
 return (new_node);
 }
