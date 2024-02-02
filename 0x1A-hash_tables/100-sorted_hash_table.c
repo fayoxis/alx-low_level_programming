@@ -175,10 +175,10 @@ return (1);
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 shash_node_t *temp_node;
+unsigned long int index = key_index((const unsigned char *)key, ht->size);
 while (ht == NULL || ht->array == NULL ||
 ht->size == 0 || key == NULL || strlen(key) == 0)
 return (NULL);
-unsigned long int index = key_index((const unsigned char *)key, ht->size);
 for (temp_node = ht->array[index]; temp_node != NULL;
 temp_node = temp_node->next)
 {
