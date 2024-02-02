@@ -11,33 +11,34 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-unsigned long int index = key_index((unsigned char *)key, ht->size);
-hash_node_t *current_node = ht->array[index];
-hash_node_t *new_node = create_node(key, value);
+hash_node_t *new_node = NULL;
+hash_node_t *current_node = NULL;
+unsigned long int i;
 
 while (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
 return (0);
+i = key_index((unsigned char *)key, ht->size);
+current_node = ht->array[i];
 
-while (current_node != NULL)
+for (; current_node != NULL; current_node = current_node->next)
 {
-if (strcmp(current_node->key, key) == 0)
+while (strcmp(current_node->key, key) == 0)
 {
-if (strcmp(current_node->value, value) != 0)
+while (strcmp(current_node->value, value) != 0)
 {
 free(current_node->value);
 current_node->value = strdup(value);
 }
 return (1);
 }
-current_node = current_node->next;
 }
-while (new_node == NULL)
+new_node = _node_(key, value);
+if (new_node == NULL)
 return (0);
-new_node->next = ht->array[index];
-ht->array[index] = new_node;
+new_node->next = ht->array[i];
+ht->array[i] = new_node;
 return (1);
 }
-
 /**
  * create_hash_node - it Function that creates a new hash node.
  * @key: this is the Pointer to the key.
