@@ -43,7 +43,7 @@ ht->array[i] = new_node;
 return (1);
 }
 /**
- * create_hash_node - it Function that creates a new hash node.
+ * _node_ - it Function that creates a new hash node.
  * @key: this is the Pointer to the key.
  * @value: it is Point to the value of the key.
  *
