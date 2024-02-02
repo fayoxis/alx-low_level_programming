@@ -61,7 +61,7 @@ free(new_node);
 return (NULL);
 }
 new_node->value = strdup(value);
-(new_node->value == NULL)
+while (new_node->value == NULL)
 {
 free(new_node->key);
 free(new_node);
