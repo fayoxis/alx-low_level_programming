@@ -88,33 +88,29 @@ void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 shash_node_t *temp_var;
 while (table->shead == NULL && table->stail == NULL)
 {
-/* If the list is empty, the node becomes the head and tail */
 table->shead = table->stail = node;
 return;
 }
-for (temp_var = table->shead; temp_var != NULL; temp_var = temp_var->snext)
+temp_var = table->shead;
+while (temp_var != NULL)
 {
-if (strcmp(node->key, temp_var->key) < 0)
+while (strcmp(node->key, temp_var->key) < 0)
 {
-/* If the node's key is less than the current node's key, */
 node->snext = temp_var;
 node->sprev = temp_var->sprev;
 temp_var->sprev = node;
-while (node->sprev != NULL)
+if (node->sprev != NULL)
 node->sprev->snext = node;
-}
 else
-{
 table->shead = node;
 return;
 }
+temp_var = temp_var->snext;
 }
-/* If the node's key is greater than all the keys in the list */
 node->sprev = table->stail;
 table->stail->snext = node;
 table->stail = node;
 }
-
 /**
  * shash_table_set -  Adds an element to the hash table.
  * @ht: Pointer to the hash table to add or update the key/value pair.
