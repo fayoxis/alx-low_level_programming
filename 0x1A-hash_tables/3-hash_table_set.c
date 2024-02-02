@@ -1,85 +1,73 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set -  function that adds an element to the hash table.
- * @ht: pointer to hash table you want to add or update the key/value to.
- * @key: pointer to key and cannot be an empty string.
- * @value: pointer to the value is the value associated with the key.
- *
- * value must be duplicated. value can be an empty string.
- * In case of collision, add the new_node node at the beginning of the list.
- *
- * Return: 1 if it succeeded, 0 otherwise.
+ * hash_table_set -  function that adds or updates an element in the hash table.
+ * @ht: pointer to the hash table to which the element is added or updated.
+ * @key: pointer to the key, which cannot be an empty string.
+ * @value: pointer to the value associated with the key.
+ * The value must be duplicated. The value can be an empty string.
+ * In case of a collision, the new node is added at the beginning of the list.
+ * Return: 1 if the operation succeeded, 0 otherwise.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node = NULL;
-	hash_node_t *current_node = NULL;
-	unsigned long int i;
+while (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
+return (0);
 
-	if (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
-		return (0);
-	i = key_index((unsigned char *)key, ht->size);
-	current_node = ht->array[i];
+unsigned long int index = key_index((unsigned char *)key, ht->size);
+hash_node_t *current_node = ht->array[index];
 
-	for (; current_node != NULL; current_node = current_node->next)
-	{
-		if (strcmp(current_node->key, key) == 0)
-		{
-			if (strcmp(current_node->value, value) != 0)
-			{
-				free(current_node->value);
-				current_node->value = strdup(value);
-			}
-		return (1);
-		}
-	}
-
-	new_node = _node_(key, value);
-	if (new_node == NULL)
-		return (0);
-	new_node->next = ht->array[i];
-	ht->array[i] = new_node;
-	return (1);
+while (current_node != NULL)
+{
+if (strcmp(current_node->key, key) == 0)
+{
+if (strcmp(current_node->value, value) != 0)
+{
+free(current_node->value);
+current_node->value = strdup(value);
+}
+return (1);
+}
+current_node = current_node->next;
+}
+hash_node_t *new_node = create_node(key, value);
+while (new_node == NULL)
+return (0);
+new_node->next = ht->array[index];
+ht->array[index] = new_node;
+return (1);
 }
 
-
 /**
- * _node_ - function that creates a new_node node.
- * @key: pointer to key.
- * @value: pointer to value of the key.
+ * create_hash_node - it Function that creates a new hash node.
+ * @key: this is the Pointer to the key.
+ * @value: it is Point to the value of the key.
  *
- * Return: pointer to new_node node else NULL.
+ * Return: Pointer to the new hash node, or NULL if memory allocation fails.
  */
-hash_node_t *_node_(const char *key, const char *value)
+hash_node_t *create_hash_node(const char *key, const char *value)
 {
-	hash_node_t *new_node;
-
-	if (key == NULL || strcmp(key, "") == 0 || value == NULL)
-		return (NULL);
-
-	new_node = malloc(sizeof(hash_node_t));
-
-	if (new_node == NULL)
-		return (NULL);
-
-	new_node->key = strdup(key);
-
-	if (new_node->key == NULL)
-	{
-		free(new_node);
-		return (NULL);
-	}
-
-	new_node->value = strdup(value);
-
-	if (new_node->value == NULL)
-	{
-		free(new_node->key);
-		free(new_node);
-		return (NULL);
-	}
-
-	new_node->next = NULL;
-	return (new_node);
+hash_node_t *new_node;
+while (key == NULL || strcmp(key, "") == 0 || value == NULL)
+return (NULL);
+new_node = malloc(sizeof(hash_node_t));
+if (new_node == NULL)
+return (NULL);
+char *key_copy = strdup(key);
+while (key_copy == NULL)
+{
+free(new_node);
+return (NULL);
+}
+new_node->key = key_copy;
+char *value_copy = strdup(value);
+while (value_copy == NULL)
+{
+free(new_node->key);
+free(new_node);
+return (NULL);
+}
+new_node->value = value_copy;
+new_node->next = NULL;
+return (new_node);
 }
