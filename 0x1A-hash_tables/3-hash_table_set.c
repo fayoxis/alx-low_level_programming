@@ -13,6 +13,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 unsigned long int index = key_index((unsigned char *)key, ht->size);
 hash_node_t *current_node = ht->array[index];
+hash_node_t *new_node = create_node(key, value);
 
 while (ht == NULL || key == NULL || value == NULL || strcmp(key, "") == 0)
 return (0);
@@ -30,7 +31,6 @@ return (1);
 }
 current_node = current_node->next;
 }
-hash_node_t *new_node = create_node(key, value);
 while (new_node == NULL)
 return (0);
 new_node->next = ht->array[index];
