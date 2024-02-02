@@ -13,7 +13,7 @@ int com;
 for (; *str != '\0'; str++)
 {
 com = *str;
-hash = ((hash << 5) + hash) + com;
+hash = ((hash << 5) + hash) +com;
 }
 return (hash);
 }
