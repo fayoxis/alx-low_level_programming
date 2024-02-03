@@ -35,13 +35,12 @@ sh_table->array[i] = NULL;
 }
 return (sh_table);
 }
-
 /**
  * make_shash_node - Creates a new node for a sorted hash table.
- * @key: Pointer to the key.
- * @value: Pointer to the value associated with the key.
+ * @key: it is a pointer - key.
+ * @value: the pointer points to the value value with the key.
  *
- * Returns: Pointer to the new node, or NULL on failure.
+ * Return: pointer to the new node, or NULL on failure.
  */
 shash_node_t *make_shash_node(const char *key, const char *value)
 {
@@ -200,7 +199,7 @@ void shash_table_print(const shash_table_t *ht)
 shash_node_t *temp_var;
 char flag = 0; /* 0 before printing any data, 1 after*/
 
-while (ht == NULL || ht->array == NULL)
+if (ht == NULL || ht->array == NULL)
 return;
 printf("{");
 temp_var = ht->shead;
@@ -225,7 +224,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 shash_node_t *temp_var;
 char flag = 0; /* 0 before printing any data, 1 after*/
 
-while (ht == NULL || ht->array == NULL)
+if (ht == NULL || ht->array == NULL)
 return;
 printf("{");
 temp_var = ht->stail;
