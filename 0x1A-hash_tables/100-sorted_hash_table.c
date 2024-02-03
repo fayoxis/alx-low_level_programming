@@ -43,27 +43,23 @@ shash_node_t *make_shash_node(const char *key, const char *value)
 {
 shash_node_t *sh_node;
 
-do {
 sh_node = malloc(sizeof(shash_node_t));
 while (sh_node == NULL)
-break;
-
+return (NULL);
 sh_node->key = strdup(key);
-if (sh_node->key == NULL) {
+while (sh_node->key == NULL)
+{
 free(sh_node);
-sh_node = NULL;
-break;
+return (NULL);
 }
-
 sh_node->value = strdup(value);
-while (sh_node->value == NULL) {
+while(sh_node->value == NULL)
+{
 free(sh_node->key);
 free(sh_node);
-sh_node = NULL;
-break;
+return (NULL);
 }
 sh_node->next = sh_node->snext = sh_node->sprev = NULL;
-} while (0);
 return (sh_node);
 }
 
