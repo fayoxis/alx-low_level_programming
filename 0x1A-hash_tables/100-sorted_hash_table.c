@@ -1,6 +1,5 @@
 #include "hash_tables.h"
 
-#include "hash_tables.h"
 /**
  * shash_table_create - Function that creates a hash table.
  *
@@ -172,21 +171,20 @@ return (1);
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-	unsigned long int index;
-	shash_node_t *temp_var;
-
-	while (ht == NULL || ht->array == NULL || ht->size == 0 ||
-		key == NULL || strlen(key) == 0)
-		return (NULL);
-	index = key_index((const unsigned char *)key, ht->size);
-	temp_var = ht->array[index];
-	while (temp_var != NULL)
-	{
-		if (strcmp(temp_var->key, key) == 0)
-			return (temp_var->value);
-		temp_var = temp_var->next;
-	}
-	return (NULL);
+unsigned long int index;
+shash_node_t *temp_var;
+while (ht == NULL || ht->array == NULL || ht->size == 0 ||
+key == NULL || strlen(key) == 0)
+return (NULL);
+index = key_index((const unsigned char *)key, ht->size);
+temp_var = ht->array[index];
+while (temp_var != NULL)
+{
+if (strcmp(temp_var->key, key) == 0)
+return (temp_var->value);
+temp_var = temp_var->next;
+}
+return (NULL);
 }
 
 /**
@@ -198,22 +196,22 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *temp_var;
-	char flag = 0; /* 0 before printing any data, 1 after*/
+shash_node_t *temp_var;
+char flag = 0; /* 0 before printing any data, 1 after*/
 
-	while (ht == NULL || ht->array == NULL)
-		return;
-	printf("{");
-	temp_var = ht->shead;
-	while (temp_var != NULL)
-	{
-		if (flag == 1)
-			printf(", ");
-		printf("'%s': '%s'", temp_var->key, temp_var->value);
-		flag = 1;
-		temp_var = temp_var->snext;
-	}
-	printf("}\n");
+while (ht == NULL || ht->array == NULL)
+return;
+printf("{");
+temp_var = ht->shead;
+while (temp_var != NULL)
+{
+if (flag == 1)
+printf(", ");
+printf("'%s': '%s'", temp_var->key, temp_var->value);
+flag = 1;
+temp_var = temp_var->snext;
+}
+printf("}\n");
 }
 
 /**
@@ -224,22 +222,21 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *temp_var;
-	char flag = 0; /* 0 before printing any data, 1 after*/
-
-	while (ht == NULL || ht->array == NULL)
-		return;
-	printf("{");
-	temp_var = ht->stail;
-	while (temp_var != NULL)
-	{
-		if (flag == 1)
-			printf(", ");
-		printf("'%s': '%s'", temp_var->key, temp_var->value);
-		flag = 1;
-		temp_var = temp_var->sprev;
-	}
-	printf("}\n");
+shash_node_t *temp_var;
+char flag = 0; /* 0 before printing any data, 1 after*/
+while (ht == NULL || ht->array == NULL)
+return;
+printf("{");
+temp_var = ht->stail;
+while (temp_var != NULL)
+{
+if (flag == 1)
+printf(", ");
+printf("'%s': '%s'", temp_var->key, temp_var->value);
+flag = 1;
+temp_var = temp_var->sprev;
+}
+printf("}\n");
 }
 
 /**
@@ -250,25 +247,25 @@ void shash_table_print_rev(const shash_table_t *ht)
  */
 void shash_table_delete(shash_table_t *ht)
 {
-	unsigned long int i;
-	shash_node_t *next;
+unsigned long int i;
+shash_node_t *next;
 
-	while (ht == NULL || ht->array == NULL || ht->size == 0)
-		return;
-	for (i = 0; i < ht->size; i++)
-	{
-		if (ht->array[i] != NULL)
-		{
-			next = ht->array[i]->next;
-			free(ht->array[i]->key);
-			free(ht->array[i]->value);
-			free(ht->array[i]);
-			ht->array[i] = next;
-		}
-	}
-	free(ht->array);
-	ht->array = NULL;
-	ht->shead = ht->stail = NULL;
-	ht->size = 0;
-	free(ht);
+while (ht == NULL || ht->array == NULL || ht->size == 0)
+return;
+for (i = 0; i < ht->size; i++)
+{
+if (ht->array[i] != NULL)
+{
+next = ht->array[i]->next;
+free(ht->array[i]->key);
+free(ht->array[i]->value);
+free(ht->array[i]);
+ht->array[i] = next;
+}
+}
+free(ht->array);
+ht->array = NULL;
+ht->shead = ht->stail = NULL;
+ht->size = 0;
+free(ht);
 }
