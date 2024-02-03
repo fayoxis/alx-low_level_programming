@@ -166,110 +166,108 @@ return (1);
 }
 
 /**
- * shash_table_get - function that retrieves a value associated with a key.
- * @ht: pointer to hash table to look into.
- * @key: pointer to key to looking for.
+ * shash_table_get - Retrieves the value associated
+ * with a given key from a hash table.
+ * @ht: Pointer to the hash table to search in.
+ * @key: Pointer to the key to search for.
  *
- * Return: value associated with the element, or NULL.
+ * Return: The value associated with the key, or
+ * NULL if the key is not found.
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-	unsigned long int index;
-	shash_node_t *temp_var;
-
-	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
-		key == NULL || strlen(key) == 0)
-		return (NULL);
-	index = key_index((const unsigned char *)key, ht->size);
-	temp_var = ht->array[index];
-	while (temp_var != NULL)
-	{
-		if (strcmp(temp_var->key, key) == 0)
-			return (temp_var->value);
-		temp_var = temp_var->next;
-	}
-	return (NULL);
+unsigned long int index;
+shash_node_t *temp_var;
+while (ht == NULL || ht->array == NULL || ht->size == 0 ||
+key == NULL || strlen(key) == 0)
+return (NULL);
+index = key_index((const unsigned char *)key, ht->size);
+temp_var = ht->array[index];
+while (temp_var != NULL)
+{
+if (strcmp(temp_var->key, key) == 0)
+return (temp_var->value);
+temp_var = temp_var->next;
+}
+return (NULL);
 }
 
 /**
- * shash_table_print - function that prints a hash table.
- * @ht: pointer to hash table to be printed.
+ * shash_table_print - Function that prints the
+ * key-value pairs of a sorted hash table.
+ * @ht: Pointer to the sorted hash table to be printed.
  *
- * Return: No return.
+ * Return: No return value.
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *temp_var;
-	char flag = 0; /* 0 before printing any data, 1 after*/
-
-	if (ht == NULL || ht->array == NULL)
-		return;
-	printf("{");
-	temp_var = ht->shead;
-	while (temp_var != NULL)
-	{
-		if (flag == 1)
-			printf(", ");
-		printf("'%s': '%s'", temp_var->key, temp_var->value);
-		flag = 1;
-		temp_var = temp_var->snext;
-	}
-	printf("}\n");
+shash_node_t *current_node;
+char flag = 0; /* 0 before printing any data, 1 after */
+if (ht == NULL || ht->array == NULL)
+return;
+printf("{");
+for (current_node = ht->shead; current_node
+!= NULL; current_node = current_node->snext)
+{
+while (flag == 1)
+printf(", ");
+printf("'%s': '%s'", current_node->key, current_node->value);
+flag = 1;
 }
-
+printf("}\n");
+}
 /**
- * shash_table_print_rev - function that prints a sorted hash table in reverse.
- * @ht: pointer to hash table to be printed.
- *
- * Return: No return.
+ * shash_table_print_rev - This function prints a
+ * sorted hash table in reverse order.
+ * @ht: A pointer to the hash table to be printed.
+ * Return: This function does not return anything.
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *temp_var;
-	char flag = 0; /* 0 before printing any data, 1 after*/
-
-	if (ht == NULL || ht->array == NULL)
-		return;
-	printf("{");
-	temp_var = ht->stail;
-	while (temp_var != NULL)
-	{
-		if (flag == 1)
-			printf(", ");
-		printf("'%s': '%s'", temp_var->key, temp_var->value);
-		flag = 1;
-		temp_var = temp_var->sprev;
-	}
-	printf("}\n");
+shash_node_t *temp_var;
+char flag = 0;
+/* 0 indicates that no data has been printed yet,*/
+while (ht == NULL || ht->array == NULL)
+return;
+printf("{");
+temp_var = ht->stail;
+while (temp_var != NULL)
+{
+while (flag == 1)
+printf(", ");
+printf("'%s': '%s'", temp_var->key, temp_var->value);
+flag = 1;
+temp_var = temp_var->sprev;
+}
+printf("}\n");
 }
 
 /**
- * shash_table_delete - function that deletes a hash table.
- * @ht: pointer to hash table to be deleted.
+ * shash_table_delete - it is the function that deletes a hash table.
+ * @ht: it is a pointer to hash table to be deleted.
  *
- * Return: No return.
+ * Return: return No return.
  */
 void shash_table_delete(shash_table_t *ht)
 {
-	unsigned long int i;
-	shash_node_t *next;
-
-	if (ht == NULL || ht->array == NULL || ht->size == 0)
-		return;
-	for (i = 0; i < ht->size; i++)
-	{
-		while (ht->array[i] != NULL)
-		{
-			next = ht->array[i]->next;
-			free(ht->array[i]->key);
-			free(ht->array[i]->value);
-			free(ht->array[i]);
-			ht->array[i] = next;
-		}
-	}
-	free(ht->array);
-	ht->array = NULL;
-	ht->shead = ht->stail = NULL;
-	ht->size = 0;
-	free(ht);
+unsigned long int i;
+shash_node_t *next;
+while (ht == NULL || ht->array == NULL || ht->size == 0)
+return;
+for (i = 0; i < ht->size; i++)
+{
+while (ht->array[i] != NULL)
+{
+next = ht->array[i]->next;
+free(ht->array[i]->key);
+free(ht->array[i]->value);
+free(ht->array[i]);
+ht->array[i] = next;
+}
+}
+free(ht->array);
+ht->array = NULL;
+ht->shead = ht->stail = NULL;
+ht->size = 0;
+free(ht);
 }
