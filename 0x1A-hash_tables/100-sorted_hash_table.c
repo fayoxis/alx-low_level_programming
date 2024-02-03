@@ -11,28 +11,25 @@
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-    shash_table_t *sh_table;
-    unsigned long int i;
+shash_table_t *sh_table;
+unsigned long int i;
+sh_table = malloc(sizeof(shash_table_t));
+while (sh_table == NULL)
+return (NULL);
+sh_table->size = size;
+sh_table->shead = NULL;
+sh_table->stail = NULL;
+sh_table->array = malloc(sizeof(shash_node_t) * size);
+while (sh_table->array == NULL)
+{
+free(sh_table);
+return (NULL);
+}
+for (i = 0; i < size; i++)
+{
+sh_table->array[i] = NULL;
+}
 
-    sh_table = malloc(sizeof(shash_table_t));
-    if (sh_table == NULL)
-        return (NULL);
-
-    sh_table->size = size;
-    sh_table->shead = NULL;
-    sh_table->stail = NULL;
-
-    sh_table->array = malloc(sizeof(shash_node_t) * size);
-    if (sh_table->array == NULL)
-    {
-        free(sh_table);
-        return (NULL);
-    }
-
-    for (i = 0; i < size; i++)
-    {
-        sh_table->array[i] = NULL;
-    }
 
 
 /**
