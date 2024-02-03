@@ -164,16 +164,18 @@ return (1);
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-shash_node_t *temp_node;
-unsigned long int index = key_index((const unsigned char *)key, ht->size);
-while (ht == NULL || ht->array == NULL ||
-ht->size == 0 || key == NULL || strlen(key) == 0)
+unsigned long int index;
+shash_node_t *temp_var;
+while (ht == NULL || ht->array == NULL || ht->size == 0 ||
+key == NULL || strlen(key) == 0)
 return (NULL);
-for (temp_node = ht->array[index]; temp_node != NULL;
-temp_node = temp_node->next)
+index = key_index((const unsigned char *)key, ht->size);
+temp_var = ht->array[index];
+while (temp_var != NULL)
 {
-while (strcmp(temp_node->key, key) == 0)
-return (temp_node->value);
+if (strcmp(temp_var->key, key) == 0)
+return (temp_var->value);
+temp_var = temp_var->next;
 }
 return (NULL);
 }
