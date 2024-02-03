@@ -1,5 +1,5 @@
 #include "hash_tables.h"
-
+#include "hash_tables.h"
 /**
  * shash_table_create - Function that creates a hash table.
  *
@@ -85,9 +85,9 @@ return (sh_node);
  * inserted before that node.
  * If the node's key is greater than all the keys in the list,
  * it becomes the new tail of the list.
- * 
+ *
  * Return: This function does not return a value.
- */ 
+ */
 void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 {
 shash_node_t *temp_var;
