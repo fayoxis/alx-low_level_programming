@@ -3,11 +3,13 @@
 /**
  * shash_table_create - Function that creates a hash table.
  *
- * This function creates a hash table of the specified size. If the allocation
- * of memory fails, it returns NULL to indicate an error.
+ * This function creates a hash table of the specified size.
+ * If the allocation of memory fails, it returns NULL to
+ * indicate an error.
  *
  * @size: Size of the hash table/array.
- * Return: Pointer to the newly created hash table, or NULL if an error occurs.
+ * Return: Pointer to the newly created hash table, or
+ * NULL if an error occurs.
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
@@ -34,12 +36,13 @@ return (sh_table);
 }
 
 /**
- * make_shash_node - function that makes a node for the sorted hash table.
- * @key: pointer to key.
- * @value: pointer to the value value associated with the key.
+ * make_shash_node - Creates a new node for a sorted hash table.
+ * @key: Pointer to the key.
+ * @value: Pointer to the value associated with the key.
  *
- * Return: pointer to the new node, or NULL on failure.
+ * Returns: Pointer to the new node, or NULL on failure.
  */
+
 shash_node_t *make_shash_node(const char *key, const char *value)
 {
 shash_node_t *sh_node;
@@ -49,14 +52,16 @@ while (sh_node == NULL)
 break;
 
 sh_node->key = strdup(key);
-if (sh_node->key == NULL) {
+if (sh_node->key == NULL)
+{
 free(sh_node);
 sh_node = NULL;
 break;
 }
 
 sh_node->value = strdup(value);
-while (sh_node->value == NULL) {
+while (sh_node->value == NULL)
+{
 free(sh_node->key);
 free(sh_node);
 sh_node = NULL;
@@ -67,45 +72,50 @@ sh_node->next = sh_node->snext = sh_node->sprev = NULL;
 return (sh_node);
 }
 
-
 /**
  * add_to_sorted_list - adds a node to the sorted (by key's ASCII),
- * linked list.
- * @table: pointer to sorted hash table.
- * @node: pointer to node to add.
+ * linked list in a sorted manner.
+ * @table: pointer to the sorted hash table.
+ * @node: pointer to the node to be added.
  *
- * Return: No return.
- */
+ * This function adds a node to the sorted linked list within the given
+ * hash table. The sorting is based on the ASCII value of the keys.
+ * If the linked list is empty, the node becomes the head and tail of the list.
+ * If the node's key is less than the current node's key, it is
+ * inserted before that node.
+ * If the node's key is greater than all the keys in the list,
+ * it becomes the new tail of the list.
+ * 
+ * Return: This function does not return a value.
+ */ 
 void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 {
-	shash_node_t *temp_var;
-
-	if (table->shead == NULL && table->stail == NULL)
-	{
-		table->shead = table->stail = node;
-		return;
-	}
-	temp_var = table->shead;
-	while (temp_var != NULL)
-	{
-		if (strcmp(node->key, temp_var->key) < 0)
-		{
-			node->snext = temp_var;
-			node->sprev = temp_var->sprev;
-			temp_var->sprev = node;
-			if (node->sprev != NULL)
-				node->sprev->snext = node;
-			else
-				table->shead = node;
-			return;
-		}
-		temp_var = temp_var->snext;
-	}
-	node->sprev = table->stail;
-	table->stail->snext = node;
-	table->stail = node;
+shash_node_t *temp_var;
+if (table->shead == NULL && table->stail == NULL)
+{
+/* If the list is empty, the node becomes the head and tail */
+table->shead = table->stail = node;
+return;
 }
-
+for (temp_var = table->shead; temp_var != NULL; temp_var = temp_var->snext)
+{
+while (strcmp(node->key, temp_var->key) < 0)
+{
+/* If the node's key is less than the current node's key,*/
+node->snext = temp_var;
+node->sprev = temp_var->sprev;
+temp_var->sprev = node;
+if (node->sprev != NULL)
+node->sprev->snext = node;
+else
+table->shead = node;
+return;
+}
+}
+node->sprev = table->stail;
+table->stail->snext = node;
+table->stail = node;
+}
 /**
  * shash_table_set -  function that adds an element to the hash table.
  * @ht: pointer to hash table you want to add or update the key/value to.
