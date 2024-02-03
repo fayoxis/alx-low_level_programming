@@ -189,18 +189,19 @@ return (NULL);
  */
 void shash_table_print(const shash_table_t *ht)
 {
-shash_node_t *current_node;
-char flag = 0; /* 0 before printing any data, 1 after */
-if (ht == NULL || ht->array == NULL)
+shash_node_t *temp_var;
+char flag = 0; /* 0 before printing any data, 1 after*/
+while (ht == NULL || ht->array == NULL)
 return;
 printf("{");
-for (current_node = ht->shead; current_node != NULL;
-current_node = current_node->snext)
+temp_var = ht->shead;
+while (temp_var != NULL)
 {
 while (flag == 1)
 printf(", ");
-printf("'%s': '%s'", current_node->key, current_node->value);
+printf("'%s': '%s'", temp_var->key, temp_var->value);
 flag = 1;
+temp_var = temp_var->snext;
 }
 printf("}\n");
 }
