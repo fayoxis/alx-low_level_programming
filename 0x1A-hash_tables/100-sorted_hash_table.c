@@ -1,37 +1,39 @@
 #include "hash_tables.h"
 
-#include "hash_tables.h"
 /**
- * shash_table_create - function that creates a hash table.
+ * shash_table_create - Function that creates a hash table.
  *
- * If something went wrong, your function should return NULL.
+ * This function creates a hash table of the specified size. If the allocation
+ * of memory fails, it returns NULL to indicate an error.
  *
- * @size: size of the hash table/array.
- * Return: pointer to the newly created hash table.
+ * @size: Size of the hash table/array.
+ * Return: Pointer to the newly created hash table, or NULL if an error occurs.
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	shash_table_t *sh_table;
-	unsigned long int i;
+    shash_table_t *sh_table;
+    unsigned long int i;
 
-	sh_table = malloc(sizeof(shash_table_t));
-	if (sh_table == NULL)
-		return (NULL);
-	sh_table->size = size;
-	sh_table->shead = NULL;
-	sh_table->stail = NULL;
-	sh_table->array = malloc(sizeof(shash_node_t) * size);
-	if (sh_table->array == NULL)
-	{
-		free(sh_table);
-		return (NULL);
-	}
-	for (i = 0; i < size; i++)
-	{
-		sh_table->array[i] = NULL;
-	}
-	return (sh_table);
-}
+    sh_table = malloc(sizeof(shash_table_t));
+    if (sh_table == NULL)
+        return (NULL);
+
+    sh_table->size = size;
+    sh_table->shead = NULL;
+    sh_table->stail = NULL;
+
+    sh_table->array = malloc(sizeof(shash_node_t) * size);
+    if (sh_table->array == NULL)
+    {
+        free(sh_table);
+        return (NULL);
+    }
+
+    for (i = 0; i < size; i++)
+    {
+        sh_table->array[i] = NULL;
+    }
+
 
 /**
  * make_shash_node - function that makes a node for the sorted hash table.
