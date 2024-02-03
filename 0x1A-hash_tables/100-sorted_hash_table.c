@@ -183,7 +183,7 @@ void shash_table_print(const shash_table_t *ht)
 	shash_node_t *temp_var;
 	char flag = 0; /* 0 before printing any data, 1 after*/
 
-	if (ht == NULL || ht->array == NULL)
+	while (ht == NULL || ht->array == NULL)
 		return;
 	printf("{");
 	temp_var = ht->shead;
@@ -209,7 +209,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 	shash_node_t *temp_var;
 	char flag = 0; /* 0 before printing any data, 1 after*/
 
-	if (ht == NULL || ht->array == NULL)
+	while (ht == NULL || ht->array == NULL)
 		return;
 	printf("{");
 	temp_var = ht->stail;
