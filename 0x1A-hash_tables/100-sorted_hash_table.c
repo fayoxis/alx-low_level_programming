@@ -217,16 +217,17 @@ void shash_table_print_rev(const shash_table_t *ht)
 shash_node_t *temp_var;
 char flag = 0;
 /* 0 indicates that no data has been printed yet,*/
-if (ht == NULL || ht->array == NULL)
+while (ht == NULL || ht->array == NULL)
 return;
 printf("{");
 temp_var = ht->stail;
-for (; temp_var != NULL; temp_var = temp_var->sprev)
+while (temp_var != NULL)
 {
-if (flag == 1)
+while (flag == 1)
 printf(", ");
 printf("'%s': '%s'", temp_var->key, temp_var->value);
 flag = 1;
+temp_var = temp_var->sprev;
 }
 printf("}\n");
 }
