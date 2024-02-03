@@ -116,48 +116,53 @@ node->sprev = table->stail;
 table->stail->snext = node;
 table->stail = node;
 }
+
 /**
- * shash_table_set -  function that adds an element to the hash table.
- * @ht: pointer to hash table you want to add or update the key/value to.
- * @key: pointer to key and cannot be an empty string.
- * @value: pointer to the value value associated with the key.
+ * shash_table_set -  Adds an element to the hash table.
+ * @ht: Pointer to the hash table to add or update the key/value pair.
+ * @key: Pointer to the key. Cannot be an empty string.
+ * @value: Pointer to the value associated with the key.
  *
- * value must be duplicated. value can be an empty string.
- * In case of collision, add the new_node node at the beginning of the list.
+ * The value must be duplicated. The value can be an empty string.
+ * If there is a collision, the new node is added at the beginning of the list.
  *
- * Return: 1 if it succeeded, 0 otherwise.
+ * Return: 1 if successful, 0 otherwise.
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index;
-	char *new_value;
-	shash_node_t *sh_node, *temp_var;
+unsigned long int index;
+char *new_value;
+shash_node_t *sh_node, *temp_var;
+/* Check for invalid input or empty key/value */
+while (ht == NULL || ht->array == NULL || ht->size == 0 ||
+key == NULL || strlen(key) == 0 || value == NULL)
+return (0);
+/* Calculate the hash index */
+index = key_index((const unsigned char *)key, ht->size);
 
-	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
-		key == NULL || strlen(key) == 0 || value == NULL)
-		return (0);
-	index = key_index((const unsigned char *)key, ht->size);
-	temp_var = ht->array[index];
-	while (temp_var != NULL)
-	{
-		if (strcmp(temp_var->key, key) == 0)
-		{
-			new_value = strdup(value);
-			if (new_value == NULL)
-				return (0);
-			free(temp_var->value);
-			temp_var->value = new_value;
-			return (1);
-		}
-		temp_var = temp_var->next;
-	}
-	sh_node = make_shash_node(key, value);
-	if (sh_node == NULL)
-		return (0);
-	sh_node->next = ht->array[index];
-	ht->array[index] = sh_node;
-	add_to_sorted_list(ht, sh_node);
-	return (1);
+/* Search for existing key in the linked list at the hash index */
+for (temp_var = ht->array[index]; temp_var
+!= NULL; temp_var = temp_var->next)
+{
+/* If the key already exists, update the value */
+while (strcmp(temp_var->key, key) == 0)
+{
+new_value = strdup(value);
+if (new_value == NULL)
+return (0);
+free(temp_var->value);
+temp_var->value = new_value;
+return (1);
+}
+}
+sh_node = make_shash_node(key, value);
+while (sh_node == NULL)
+return (0);
+sh_node->next = ht->array[index];
+ht->array[index] = sh_node;
+/* Add the new node to the sorted list */
+add_to_sorted_list(ht, sh_node);
+return (1);
 }
 
 /**
