@@ -1,5 +1,6 @@
 #include "hash_tables.h"
 #include "hash_tables.h"
+
 /**
  * shash_table_create - Function that creates a hash table.
  *
@@ -42,7 +43,6 @@ return (sh_table);
  *
  * Returns: Pointer to the new node, or NULL on failure.
  */
-
 shash_node_t *make_shash_node(const char *key, const char *value)
 {
 shash_node_t *sh_node;
@@ -71,7 +71,6 @@ sh_node->next = sh_node->snext = sh_node->sprev = NULL;
 } while (0);
 return (sh_node);
 }
-
 /**
  * add_to_sorted_list - adds a node to the sorted (by key's ASCII),
  * linked list in a sorted manner.
@@ -116,7 +115,6 @@ node->sprev = table->stail;
 table->stail->snext = node;
 table->stail = node;
 }
-
 /**
  * shash_table_set -  Adds an element to the hash table.
  * @ht: Pointer to the hash table to add or update the key/value pair.
@@ -164,7 +162,6 @@ ht->array[index] = sh_node;
 add_to_sorted_list(ht, sh_node);
 return (1);
 }
-
 /**
  * shash_table_get - Retrieves the value associated
  * with a given key from a hash table.
@@ -191,7 +188,6 @@ temp_var = temp_var->next;
 }
 return (NULL);
 }
-
 /**
  * shash_table_print - Function that prints the
  * key-value pairs of a sorted hash table.
@@ -241,7 +237,6 @@ temp_var = temp_var->sprev;
 }
 printf("}\n");
 }
-
 /**
  * shash_table_delete - it is the function that deletes a hash table.
  * @ht: it is a pointer to hash table to be deleted.
