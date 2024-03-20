@@ -1,7 +1,13 @@
 #!/usr/bin/python3
-def island_perimeter(grid):
-    """Returns the perimeter of the island in grid."""
+"""Function island_perimeter(grid)"""
 
+
+def island_perimeter(grid):
+    """returns the perimeter of the island described in grid.
+
+    Args:
+        grid (list): grid
+    """
     perimeter = 0
     rows = len(grid)
     cols = len(grid[0])
