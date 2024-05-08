@@ -1,4 +1,3 @@
-#endif /* _search_algos_ */
 #ifndef _search_algos_
 #define _search_algos_
 
