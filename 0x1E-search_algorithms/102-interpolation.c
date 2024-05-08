@@ -1,3 +1,5 @@
+#include "search_algos.h"
+
 /**
  * interpolation_search - Perform an interpolation search on a sorted array
  * @array: Pointer to the first element
