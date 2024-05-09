@@ -14,9 +14,11 @@
  */
 int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
     size_t i, j;
+    size_t k;
+    size_t mid;
     i = left;
     j = right;
-    size_t k;
+   
     if (right < left)
         return (-1);
 
@@ -28,7 +30,7 @@ int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
             printf("%d, ", array[k]);
         printf("%d\n", array[j]);
 
-        size_t mid = i + (j - i) / 2;
+        mid = i + (j - i) / 2;
         if (array[mid] == value && (mid == i || array[mid - 1] != value))
             return (mid);
         if (array[mid] >= value)
