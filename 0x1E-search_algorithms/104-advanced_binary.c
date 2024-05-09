@@ -14,25 +14,21 @@
  */
 int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
     size_t mid;
-
     if (right < left)
-        return (-1);
-
+        return -1;
     printf("Searching in array: ");
-    for (size_t i = left; i <= right; i++) {
-        printf("%d", array[i]);
-        if (i != right)
-            printf(", ");
+    size_t i = left;
+    while (i < right) {
+        printf("%d, ", array[i]);
+        i++;
     }
-    printf("\n");
-
+    printf("%d\n", array[i]);
     mid = left + (right - left) / 2;
     if (array[mid] == value && (mid == left || array[mid - 1] != value))
-        return (mid);
-    else if (array[mid] >= value)
-        return (advan_bin_recursive(array, left, mid - 1, value));
-    else
-        return (advan_bin_recursive(array, mid + 1, right, value));
+        return mid;
+    if (array[mid] >= value)
+        return advan_bin_recursive(array, left, mid, value);
+    return advan_bin_recursive(array, mid + 1, right, value);
 }
 
 /**
