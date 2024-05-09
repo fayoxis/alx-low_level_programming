@@ -18,31 +18,38 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-size_t i;
-size_t step = sqrt(size);
-listint_t *node = list;
-listint_t *prev = NULL;
-if (list == NULL || size == 0)
-return (NULL);
+    size_t step, step_size;
+    listint_t *node, *jump;
+    step = 0;
+    step_size = sqrt(size);
+    node = jump = list;
+  
+    if (list == NULL || size == 0)
+        return (NULL);
 
-while (node->n < value)
-{
-prev = node;
-for (i = 0; i < step && node->next; i++)
-node = node->next;
 
-printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
-if (node->n >= value)
-break;
-}
+    do {
+        for (step += step_size; jump->index < step && jump->index + 1 < size; jump = jump->next) {
+            if (jump->index + 1 == size)
+                break;
+        }
+        printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 
-printf("Value found between indexes [%ld] and [%ld]\n", prev->index, node->index);
-while (prev->n < value)
-{
-printf("Value checked at index [%ld] = [%d]\n", prev->index, prev->n);
-prev = prev->next;
-}
-printf("Value checked at index [%ld] = [%d]\n", prev->index, prev->n);
-return ((prev->n == value) ? prev : NULL);
+        if (jump->n >= value) {
+            printf("Value found between indexes [%ld] and [%ld]\n", node->index, jump->index);
+            break;
+        }
+
+        node = jump;
+    } while (jump->index + 1 < size);
+
+    while (node->index < jump->index && node->n < value) {
+        printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+        node = node->next;
+    }
+
+    printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+
+    return (node->n == value ? node : NULL);
 }
