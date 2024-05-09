@@ -6,7 +6,7 @@
  * @left : The starting index of the subarray to search.
  * @right : The ending index of the subarray to search.
  * @value :The value to search for.
- * Return : return If the value is not present or the array is NULL,
+ * Return:  return If the value is not present or the array is NULL,
  * -1. Otherwise, the index where the value is located.
  * Description :This function implements the binary search algorithm
  * specified value in the given sorted array. After each iteration of
