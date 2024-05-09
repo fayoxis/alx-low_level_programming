@@ -1,16 +1,14 @@
 #include "search_algos.h"
 
 /**
- * _binary_search : Performs a binary search on a sorted array of integers.
+ * _binary_search : Performs a binary search on a sorted
  * @array : A pointer to the first element of the array to search.
  * @left : The starting index of the subarray to search.
  * @right : The ending index of the subarray to search.
  * @value :The value to search for.
- *
  * Return : return If the value is not present or the array is NULL,
  * -1. Otherwise, the index where the value is located.
- *
- * Description This function implements the binary search algorithm to find the
+ * Description This function implements the binary search algorithm
  * specified value in the given sorted array. After each iteration of
  * the search, it prints the subarray being searched.
  */
