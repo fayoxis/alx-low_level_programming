@@ -12,13 +12,14 @@
  * Description: Prints the (sub)array being searched
  * after each recursive step.
  */
-int advan_bin_recursive (int *array, size_t left, size_t right, int value) {
+int advan_bin_recursive(int *array, size_t left, size_t right, int value){
 size_t mid;
 size_t i = left;
 if (right < left)
 return (-1);
 printf("Searching in array: ");
-while (i < right) {
+while (i < right)
+{
 printf("%d, ", array[i]);
 i++;
 }
@@ -38,7 +39,7 @@ return (advan_bin_recursive(array, mid + 1, right, value));
   * @value: The value to search for.
   * Return: returns If the value is not present or the array is NULL,
   * -1. Otherwise, the first index where the value is located.
-  * Description: this will Prints the [sub]array being searched after each change.
+  * Description: this will Prints the [sub]array]
   */
 int advanced_binary(int *array, size_t size, int value)
 {
