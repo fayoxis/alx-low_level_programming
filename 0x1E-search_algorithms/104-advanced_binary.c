@@ -13,28 +13,30 @@
  * after each recursive step.
  */
 int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
-    size_t index;
+
+    size_t i, j;
 
     if (right < left)
         return (-1);
 
-    printf("Searching in array: ");
-    index = left;
-    do {
-        printf("%d, ", array[index]);
-    } while (++index < right);
-    printf("%d\n", array[index]);
+    i = left;
+    j = right;
 
-    index = left + (right - left) / 2;
     do {
-        if (array[index] == value && (index == left || array[index - 1] != value))
-            return (index);
-        if (array[index] >= value)
-            right = index;
+        printf("Searching in array: ");
+        size_t k;
+        for (k = i; k < j; k++)
+            printf("%d, ", array[k]);
+        printf("%d\n", array[j]);
+
+        size_t mid = i + (j - i) / 2;
+        if (array[mid] == value && (mid == i || array[mid - 1] != value))
+            return (mid);
+        if (array[mid] >= value)
+            j = mid;
         else
-            left = index + 1;
-        index = left + (right - left) / 2;
-    } while (left <= right);
+            i = mid + 1;
+    } while (i <= j);
 
     return (-1);
 }
