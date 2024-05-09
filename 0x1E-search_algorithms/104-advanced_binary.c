@@ -15,7 +15,7 @@
 int advan_bin_recursive(int *array, size_t left, size_t right, int value)
 {
 size_t index;
-while (right < left)
+if (right < left)
 return (-1);
 printf("Searching in array: ");
 for (index = left; index < right; index++)
