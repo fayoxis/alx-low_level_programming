@@ -22,7 +22,7 @@ for (index = left; index < right; index++)
 printf("%d, ", array[index]);
 printf("%d\n", array[index]);
 index = left + (right - left) / 2;
-while (array[index] == value && (index == left || array[index - 1] != value))
+if (array[index] == value && (index == left || array[index - 1] != value))
 return (index);
 if (array[index] >= value)
 return (advan_bin_recursive(array, left, index, value));
