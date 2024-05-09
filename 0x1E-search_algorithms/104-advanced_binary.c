@@ -12,7 +12,8 @@
  * Description: Prints the (sub)array being searched
  * after each recursive step.
  */
-int advan_bin_recursive(int *array, size_t left, size_t right, int value){
+int advan_bin_recursive(int *array, size_t left, size_t right, int value)
+{
 size_t mid;
 size_t i = left;
 if (right < left)
@@ -26,7 +27,7 @@ i++;
 printf("%d\n", array[i]);
 mid = left + (right - left) / 2;
 if (array[mid] == value && (mid == left || array[mid - 1] != value))
-return mid;
+return (mid);
 if (array[mid] >= value)
 return (advan_bin_recursive(array, left, mid, value));
 return (advan_bin_recursive(array, mid + 1, right, value));
