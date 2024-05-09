@@ -24,13 +24,13 @@ int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
     }
 
     while (left <= right) {
-        index = left + (right - left) / 2;
+        index = (left + right) / 2;
         if (array[index] == value && (index == left || array[index - 1] != value))
             return (index);
-        if (array[index] >= value)
-            right = index - 1;
-        else
+        if (array[index] < value)
             left = index + 1;
+        else
+            right = index - 1;
     }
 
     return (-1);
