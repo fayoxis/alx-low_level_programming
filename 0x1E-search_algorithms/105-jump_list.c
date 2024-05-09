@@ -6,7 +6,7 @@
  * @size: Number of nodes in the list.
  * @value: Value to search for.
  * Return: Pointer to the first node containing the value
- * Description: This function performs a jump search on the given sorted linked list.
+ * Description: This function performs a jump search
  * It first calculates the jump step size (square root of the list size),
  * and then iterates through the list
  */
@@ -28,7 +28,8 @@ while (jump->index < step && jump->index + 1 < size)
 jump = jump->next;
 printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 }
-printf("Value found between indexes [%ld] and [%ld]\n", node->index, jump->index);
+printf("Value found between indexes [%ld] and [%ld]\n",
+node->index, jump->index);
 while (node->index < jump->index && node->n < value)
 {
 printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
