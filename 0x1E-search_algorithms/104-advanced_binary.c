@@ -19,21 +19,18 @@ int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
         return (-1);
 
     printf("Searching in array: ");
-    for (index = left; index <= right; index++) {
-        printf("%d%s", array[index], index == right ? "\n" : ", ");
-    }
+    index = left;
+    do {
+        printf("%d, ", array[index]);
+    } while (++index < right);
+    printf("%d\n", array[index]);
 
-    while (left <= right) {
-        index = (left + right) / 2;
-        if (array[index] == value && (index == left || array[index - 1] != value))
-            return (index);
-        if (array[index] < value)
-            left = index + 1;
-        else
-            right = index - 1;
-    }
-
-    return (-1);
+    index = left + (right - left) / 2;
+    if (array[index] == value && (index == left || array[index - 1] != value))
+        return (index);
+    if (array[index] >= value)
+        return (advan_bin_recursive(array, left, index, value));
+    return (advan_bin_recursive(array, index + 1, right, value));
 }
 
 /**
