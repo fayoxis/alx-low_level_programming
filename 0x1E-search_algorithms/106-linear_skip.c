@@ -5,7 +5,7 @@
  * @value The value to search for.
  * Return: If the value is not present or the head of the list
  * Otherwise, returns a pointer to the first node
- * Description: This function implements the linear skip search algorithm
+ * Description:  This function implements the linear skip search algorithm
  * to efficiently search for a value in a sorted singly linked list.
  * It prints the value being compared at each step of the search.
  * The jump step used is the square root of the list size,
