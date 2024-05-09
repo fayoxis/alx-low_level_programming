@@ -1,6 +1,7 @@
 #include "search_algos.h"
+
 /**
- * linear_skip -Performs a linear skip search for a value
+ * linear_skip - Performs a linear skip search for a value
  * @list A pointer to the head of the linked list to search.
  * @value The value to search for.
  * Return: If the value is not present or the head of the list
@@ -12,6 +13,7 @@
  * which provides a good balance between
  * the number of jumps and the number of comparisons.
  */
+
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
 skiplist_t *node, *jump;
