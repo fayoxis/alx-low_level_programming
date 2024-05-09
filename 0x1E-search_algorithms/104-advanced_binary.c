@@ -26,11 +26,17 @@ int advan_bin_recursive(int *array, size_t left, size_t right, int value) {
     printf("%d\n", array[index]);
 
     index = left + (right - left) / 2;
-    if (array[index] == value && (index == left || array[index - 1] != value))
-        return (index);
-    if (array[index] >= value)
-        return (advan_bin_recursive(array, left, index, value));
-    return (advan_bin_recursive(array, index + 1, right, value));
+    do {
+        if (array[index] == value && (index == left || array[index - 1] != value))
+            return (index);
+        if (array[index] >= value)
+            right = index;
+        else
+            left = index + 1;
+        index = left + (right - left) / 2;
+    } while (left <= right);
+
+    return (-1);
 }
 
 /**
