@@ -41,8 +41,7 @@ return (advan_bin_recursive(array, index + 1, right, value));
   */
 int advanced_binary(int *array, size_t size, int value)
 {
-	while (array == NULL || size == 0)
-		return (-1);
-
-	return (advan_bin_recursive(array, 0, size - 1, value));
+if (array == NULL || size == 0)
+return (-1);
+return (advan_bin_recursive(array, 0, size - 1, value));
 }
