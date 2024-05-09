@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * _binary_search : Performs a binary search on a sorted
+ * _binary_search -  Performs a binary search on a sorted
  * @array : A pointer to the first element of the array to search.
  * @left : The starting index of the subarray to search.
  * @right : The ending index of the subarray to search.
