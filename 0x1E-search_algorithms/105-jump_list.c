@@ -23,31 +23,24 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
     step = 0;
     step_size = sqrt(size);
     node = jump = list;
-  
+
     if (list == NULL || size == 0)
         return (NULL);
 
 
-
     do {
-        for (step += step_size; jump->index < step && jump->index + 1 < size; jump = jump->next) {
+        for (step += step_size; jump->index < step; jump = jump->next) {
             if (jump->index + 1 == size)
                 break;
         }
         printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
+    } while (jump->index + 1 < size && jump->n < value);
 
-        if (jump->n >= value) {
-            printf("Value found between indexes [%ld] and [%ld]\n", node->index, jump->index);
-            break;
-        }
+    printf("Value found between indexes [%ld] and [%ld]\n", node->index, jump->index);
 
-        node = jump;
-    } while (jump->index + 1 < size);
-
-    while (node->index < jump->index && node->n < value) {
+    do {
         printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
-        node = node->next;
-    }
+    } while (node->index < jump->index && node->n < value && (node = node->next));
 
     printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
